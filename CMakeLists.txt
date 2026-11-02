@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.18)
+
+set(CMAKE_CUDA_ARCHITECTURES 52)
+
+if(NOT CMAKE_CUDA_HOST_COMPILER)
+	find_program(CUDA_COMPATIBLE_HOST_COMPILER NAMES g++-10 g++-9)
+	if(CUDA_COMPATIBLE_HOST_COMPILER)
+		set(CMAKE_CUDA_HOST_COMPILER "${CUDA_COMPATIBLE_HOST_COMPILER}")
+	endif()
+endif()
+
+project(cuda_vector_sum LANGUAGES CXX CUDA)
+
+add_subdirectory(test1)
